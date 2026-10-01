@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sem-serif;
+    background-color: rgba(169, 94, 81, 0.651); /* Uma cor de fundo cinza bem clarinha */
+    padding: 20px;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: rgba(236, 107, 107, 0.466);
+    padding: 20px;
+    border-radius: 10px; /*arredonda as pontas*/
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.formulario {
+    display: flex; /* Coloca os itens lado a lado */
+    gap: 10px; /* Cria um espaço de 10px entre os itens */
+    margin-bottom: 30px;
+}
+
+input, select, button {
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 6px;
+}
+
+input {
+    flex: 1; /* Faz a caixa de texto crescer para ocupar o espaço que sobrar */
+}
+
+button {
+    background-color: #f3a784c9;
+    color:rgba(12, 12, 12, 0.938);
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #f0966dc9;
+}
+
+.iten_card {
+    background-color: #e9ecef;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 5px solid rgba(240, 84, 73);
+    border-radius: 4px;
+}
