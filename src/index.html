@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <!--Informações sobre a página (não visíveis na tela)-->
+    <meta charset="UTF-8"> <!--Codificação de caracteres-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Pessoal</title> <!--Texto da aba do navegador-->
+    <link rel="stylesheet" href="style.css"> <!--Conecta arquivos CSS externo como modo de estilo-->
+</head>
+
+<body> <!--O que aparece na tela-->
+    <div class="container"> <!--Div: caixa generica-->
+        <h1>Meu Catálogo</h1>
+
+        <div class="formulario">
+            <input type="text" id="titulo" placeholder="Ex: Viagem ao Centro da Terra">
+
+            <select id="categoria">
+                <option value="Livro">Livro</option>
+                <option value="Música">Album de Musica</option>
+                <option value="Outro">Outros assuntos</option>
+            </select>
+
+            <button id="button_adicionar">Adicionar</button>
+        </div>
+
+        <div id="lista_itens"></div>
+    </div>
+
+    <script src="script.js"></script> <!--Conecta arquivos Javascrit ao HTML-->
+</body>
+</html>
