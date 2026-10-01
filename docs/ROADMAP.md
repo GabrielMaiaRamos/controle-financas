@@ -6,8 +6,6 @@
 Este documento descreve a evolução planejada do projeto, dividida em fases
 Cada fase representa um bloco de aprendizado e um entregável concreto.
 
-```markdown
-
 ## Fase 1 — Fundamentos Web (Atual)
 **Objetivo:** Dominar a base do desenvolvimento web.
 - [x] Estrutura HTML semântica
