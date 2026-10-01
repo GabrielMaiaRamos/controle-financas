@@ -40,3 +40,13 @@ Este é um **projeto de aprendizado prático** que estou usando para dominar o d
 - LangChain + API de LLM (recomendações com IA)
 
 ---
+
+## Roadmap
+
+O plano completo está em [docs/ROADMAP.md](docs/ROADMAP.md):
+
+1. **Fase 1 — Fundamentos Web:** HTML, CSS, JavaScript puro
+2. **Fase 2 — Interatividade:** DOM, eventos, LocalStorage
+3. **Fase 3 — Modernização:** Framework frontend (React/Next.js)
+4. **Fase 4 — Backend:** API, banco de dados, autenticação
+5. **Fase 5 — IA:** Sistema de recomendações personalizadas
