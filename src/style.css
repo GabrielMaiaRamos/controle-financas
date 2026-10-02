@@ -1,60 +1,155 @@
+:root {
+  /* ===== Cores base (A Ambientação Vermelha) ===== */
+  --bg:           #c56e6e;   /* Fundo geral */
+  --bg-faixa:     #b85555;   /* Fundo secundário: faixas, menus */
+  --card:         #fff5f5;   /* Cards: branco tingido de vermelho */
+
+  /* ===== Texto ===== */
+  --texto:        #4a1515;   /* Vinho muito escuro */
+  --texto-fraco:  #9e5c5c;   /* Vermelho-acinzentado para rótulos */
+
+  /* ===== Bordas (somente CORES — não o shorthand!) ===== */
+  --borda:        #f0b6b6;   /* Divisórias suaves */
+  --borda-forte:  #df8585;   /* Inputs, linhas visíveis */
+
+  /* ===== Vermelho (Destaques e Botões) ===== */
+  --accent:        #d93636;
+  --accent-forte1: #a61e1e;
+  --accent-forte2: #ee6565c9;
+  --accent-fraco1: #f09e9e;
+  --accent-fraco2: #f3a784c9;
+  --accent-borda:  #e87676;
+
+  /* ===== Estados ===== */
+  --erro:          #d93636;
+  --sucesso:       #428f52;
+
+  /* ===== Espaçamento (escala de 4px) ===== */
+  --esp-1: 4px;
+  --esp-2: 8px;
+  --esp-3: 12px;
+  --esp-4: 16px;
+  --esp-5: 24px;
+  --esp-6: 32px;
+
+  /* ===== Tipografia ===== */
+  --fonte:        system-ui, -apple-system, "Segoe UI", sans-serif;
+  --txt-pequeno:  0.85rem;
+  --txt-base:     1rem;
+  --txt-medio:    1.1rem;
+  --txt-grande:   1.6rem;
+
+  /* ===== Forma ===== */
+  --radius:    10px;
+  --radius-sm: 6px;
+  --sombra:    0 4px 8px rgba(44, 7, 7, 0.25);
+}
+
+/* ===== Reset ===== */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: Arial, sem-serif;
-    background-color: rgba(169, 94, 81, 0.651); /* Uma cor de fundo cinza bem clarinha */
-    padding: 20px;
+  font-family: var(--fonte);
+  background-color: var(--bg);
+  color: var(--texto);
+  line-height: 1.55;
+  padding: var(--esp-5);
 }
 
+/* ===== Container ===== */
 .container {
-    max-width: 700px;
-    margin: 0 auto;
-    background-color: rgba(236, 107, 107, 0.466);
-    padding: 20px;
-    border-radius: 10px; /*arredonda as pontas*/
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: var(--bg-faixa);
+  padding: var(--esp-5);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
 }
 
+/* ===== Título ===== */
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: var(--esp-5);
+  font-size: var(--txt-grande);
+  color: var(--texto);
+  letter-spacing: 0.02em;
 }
 
+/* ===== Formulário ===== */
 .formulario {
-    display: flex; /* Coloca os itens lado a lado */
-    gap: 10px; /* Cria um espaço de 10px entre os itens */
-    margin-bottom: 30px;
+  display: flex;
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-5);
 }
 
-input, select, button {
-    padding: 10px;
-    border: 2px solid #000000;
-    border-radius: 6px;
+input, select {
+  padding: var(--esp-3);
+  border: 2px solid var(--borda);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  color: var(--texto);
+  background-color: var(--card);
+  transition: border-color .15s, box-shadow .15s;
 }
 
-input {
-    flex: 1; /* Faz a caixa de texto crescer para ocupar o espaço que sobrar */
+input::placeholder {
+  color: var(--texto-fraco);
+  opacity: 0.7;
 }
 
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent-borda);
+  box-shadow: 0 0 0 3px var(--accent-fraco1);
+}
+
+input { flex: 1; }
+
+/* ===== Botão ===== */
 button {
-    background-color: #f3a784c9;
-    color:rgba(12, 12, 12, 0.938);
-    cursor: pointer;
-    border: none;
+  padding: var(--esp-3) var(--esp-4);
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent-fraco1);
+  color: var(--texto);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .15s, transform .08s;
 }
 
 button:hover {
-    background-color: #f0966dc9;
+  background-color: var(--accent-forte2);
 }
 
-.iten_card {
-    background-color: #e9ecef;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-left: 5px solid rgba(240, 84, 73);
-    border-radius: 4px;
+button:active {
+  transform: translateY(1px);
+}
+
+/* ===== Cards de item ===== */
+.item-card {
+  background-color: var(--card);
+  padding: var(--esp-4);
+  margin-bottom: var(--esp-3);
+  border-left: 5px solid var(--accent);
+  border-radius: var(--radius-sm);
+  color: var(--texto);
+  box-shadow: var(--sombra);
+}
+
+.item-card strong {
+  color: var(--accent-forte1);
+  margin-right: var(--esp-1);
+}
+
+/* ===== Estado vazio ===== */
+.vazio {
+  text-align: center;
+  color: var(--texto-fraco);
+  padding: var(--esp-6) var(--esp-4);
+  font-size: var(--txt-pequeno);
 }
