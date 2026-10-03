@@ -1,31 +1,18 @@
-//Buscar elementos HTML
-const inputTitulo = document.getElementById('titulo');
-const selectCategoria = document.getElementById('categoria');
-const btnAdicionar = document.getElementById('btn-adicionar');
-const listaItens = document.getElementById('lista-itens');
+//=====[REFERENCIAS DO HTML]=====
+const DOM = {
+    inputTitulo: document.getElementById('titulo'),
+    selectCategoria: document.getElementById('categoria'),
+    btnAdicionar: document.getElementById('btn-adicionar'),
+    listaItens: document.getElementById('lista-itens'),
+    inputBusca: document.getElementById('busca'),
+    selectFiltro: document.getElementById('filtro-categoria')
+};
 
-//memoria central
-let catalogo = [];
+//=====[ESTADO DA APLICACAO]=====
+let catalogo = []; //memoria central
+let idEmEdicao = null; //controla se esta editando um item
 
-//funcao para desenhar na tela baseado na memoria
-function renderScreen(){
-    listaItens.innerHTML = ''; //limpa tudo da tela
-
-    catalogo.forEach(function(item){
-        const novoCard = document.createElement('div'); //cria a caixa (div) do elemento
-        novoCard.classList.add('container'); //adiciona a classe do CSS
-
-        novoCard.innerHTML = `
-            <div class="item-card">
-                <strong>${item.categoria}:</strong>${item.titulo}
-            </div>
-            <button class="btn-remover" data-id="${item.id}">Remover</button>
-            
-        `;
-        //adiciono o data-id do item no botao, para quando for apertado, saber qual id remover
-        listaItens.appendChild(novoCard);
-    });
-}
+//=====[PERSISTENCIA (localStorage)]=====
 
 //salvar dados no localStorage
 function saveData(){
@@ -45,6 +32,34 @@ function loadData(){
         renderScreen();
     }
 }
+
+//=====[LOGICA DE DADOS (CRUD)]=====
+function addItem(id,titulo,categoria){
+    
+}
+
+
+//funcao para desenhar na tela baseado na memoria
+function renderScreen(){
+    listaItens.innerHTML = ''; //limpa tudo da tela
+
+    catalogo.forEach(function(item){
+        const novoCard = document.createElement('div'); //cria a caixa (div) do elemento
+        novoCard.classList.add('card-bg'); //adiciona a classe do CSS
+
+        novoCard.innerHTML = `
+            <div class="item-card">
+                <strong>${item.categoria}:</strong>${item.titulo}
+            </div>
+            <button class="btn-remover" data-id="${item.id}">Remover</button>
+            
+        `;
+        //adiciono o data-id do item no botao, para quando for apertado, saber qual id remover
+        listaItens.appendChild(novoCard);   
+    });
+}
+
+
 
 listaItens.addEventListener('click', function(evento){
     //so faz a funcao caso seja o botao de remover
