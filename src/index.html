@@ -10,7 +10,6 @@
 <body> <!--O que aparece na tela-->
     <div class="container"> <!--Div: caixa generica-->
         <h1>Meu Catálogo</h1>
-
         <div class="formulario">
             <input type="text" id="titulo" placeholder="Ex: Viagem ao Centro da Terra">
 
@@ -20,10 +19,12 @@
                 <option value="Outro">Outros assuntos</option>
             </select>
 
-            <button id="button_adicionar">Adicionar</button>
+            <button id="btn-adicionar">Adicionar</button>
         </div>
+    </div>
 
-        <div id="lista_itens"></div>
+    <div class="vazio">
+        <div id="lista-itens"></div>
     </div>
 
     <script src="script.js"></script> <!--Conecta arquivos Javascrit ao HTML-->

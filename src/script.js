@@ -1,8 +1,8 @@
 //Buscar elementos HTML
 const inputTitulo = document.getElementById('titulo');
 const selectCategoria = document.getElementById('categoria');
-const btnAdicionar = document.getElementById('button_adicionar');
-const listaItens = document.getElementById('lista_itens');
+const btnAdicionar = document.getElementById('btn-adicionar');
+const listaItens = document.getElementById('lista-itens');
 
 //memoria central
 let catalogo = [];
@@ -13,17 +13,17 @@ function renderScreen(){
 
     catalogo.forEach(function(item){
         const novoCard = document.createElement('div'); //cria a caixa (div) do elemento
-        novoCard.classList.add('item_card'); //adiciona a classe do CSS
+        novoCard.classList.add('container'); //adiciona a classe do CSS
 
         novoCard.innerHTML = `
-            <div class="item_conteudo">
+            <div class="item-card">
                 <strong>${item.categoria}:</strong>${item.titulo}
             </div>
-            <button class="btn_remover" data-id="${item.id}">Remover</button>
+            <button class="btn-remover" data-id="${item.id}">Remover</button>
+            
         `;
         //adiciono o data-id do item no botao, para quando for apertado, saber qual id remover
         listaItens.appendChild(novoCard);
-
     });
 }
 
@@ -48,7 +48,7 @@ function loadData(){
 
 listaItens.addEventListener('click', function(evento){
     //so faz a funcao caso seja o botao de remover
-    const btn = evento.target.closest('.btn_remover');
+    const btn = evento.target.closest('.btn-remover');
     if(!btn) return;
     
     //pega o id do item
