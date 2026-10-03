@@ -14,7 +14,14 @@ function renderScreen(){
     catalogo.forEach(function(item){
         const novoCard = document.createElement('div'); //cria a caixa (div) do elemento
         novoCard.classList.add('item_card'); //adiciona a classe do CSS
-        novoCard.innerHTML = `<strong>${item.categoria}:</strong> ${item.titulo}`; //texto dentro da caixa
+
+        novoCard.innerHTML = `
+            <div class="item_conteudo">
+                <strong>${item.categoria}:</strong>${item.titulo}
+            </div>
+            <button class="btn_remover" data-id="${item.id}">Remover</button>
+        `;
+        //adiciono o data-id do item no botao, para quando for apertado, saber qual id remover
         listaItens.appendChild(novoCard);
 
     });
@@ -39,6 +46,23 @@ function loadData(){
     }
 }
 
+listaItens.addEventListener('click', function(evento){
+    //so faz a funcao caso seja o botao de remover
+    const btn = evento.target.closest('.btn_remover');
+    if(!btn) return;
+    
+    //pega o id do item
+    const id = btn.dataset.id;
+
+    //cria uma nova lista com todo os itens em que o id é diferente do clicado
+    catalogo = catalogo.filter(function(item){
+        return item.id !== id;
+    });
+
+    saveData();
+    renderScreen();
+})
+
 //acao de clicar no botao
 btnAdicionar.addEventListener('click', function(){
 
@@ -53,6 +77,7 @@ btnAdicionar.addEventListener('click', function(){
     
     //criar um objeto com os dados dos inputs
     const novoItem = {
+        id: crypto.randomUUID(), //gera um ID random e unico
         titulo: titulo,
         categoria: categoria
     };
