@@ -82,11 +82,14 @@ h1 {
 /* ===== Formulário ===== */
 .formulario {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   gap: var(--esp-3);
   margin-bottom: var(--esp-5);
 }
 
 input, select {
+  min-width: 0;
   padding: var(--esp-3);
   border: 2px solid var(--borda);
   border-radius: var(--radius-sm);
