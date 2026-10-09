@@ -9,7 +9,7 @@ const DOM = {
 };
 
 //=====[ESTADO DA APLICACAO]=====
-let catalogo = []; //memoria central
+let lancamentos = []; //memoria central
 let idEmEdicao = null; //controla se esta editando um item
 
 //=====[PERSISTENCIA (localStorage)]=====
@@ -17,18 +17,18 @@ let idEmEdicao = null; //controla se esta editando um item
 //salvar dados no localStorage
 function saveData(){
     //localStorage so aceita textos, JSON.stringify transforma o Array em um texto formato JSON
-    const dadosEmTextoJSON = JSON.stringify(catalogo);
+    const dadosEmTextoJSON = JSON.stringify(lancamentos);
     console.log(dadosEmTextoJSON);
-    localStorage.setItem('meuCatalogoSalvo', dadosEmTextoJSON);
+    localStorage.setItem('controleFinancasSalvas', dadosEmTextoJSON);
 }
 
 //carregar dados do navegador ao abrir site
 function loadData(){
-    const dadosDoNavegador = localStorage.getItem('meuCatalogoSalvo');
+    const dadosDoNavegador = localStorage.getItem('controleFinancasSalvas') || localStorage.getItem('minhasFinancasSalvas');
 
     if (dadosDoNavegador) {
         //JSON.pase faz o caminho inverso: transforma texto JSON de volta em um Array
-        catalogo = JSON.parse(dadosDoNavegador);
+        lancamentos = JSON.parse(dadosDoNavegador);
         renderScreen();
     }
 }
@@ -43,7 +43,7 @@ function addItem(id,titulo,categoria){
 function renderScreen(){
     listaItens.innerHTML = ''; //limpa tudo da tela
 
-    catalogo.forEach(function(item){
+    lancamentos.forEach(function(item){
         const novoCard = document.createElement('div'); //cria a caixa (div) do elemento
         novoCard.classList.add('card-bg'); //adiciona a classe do CSS
 
@@ -70,7 +70,7 @@ listaItens.addEventListener('click', function(evento){
     const id = btn.dataset.id;
 
     //cria uma nova lista com todo os itens em que o id é diferente do clicado
-    catalogo = catalogo.filter(function(item){
+    lancamentos = lancamentos.filter(function(item){
         return item.id !== id;
     });
 
@@ -86,7 +86,7 @@ btnAdicionar.addEventListener('click', function(){
     const categoria = selectCategoria.value;
 
     if (titulo == ''){ //verificacao de seguranca
-        alert('Por favor, digite o título.');
+        alert('Por favor, digite uma descricao.');
         return;
     }
     
@@ -98,7 +98,7 @@ btnAdicionar.addEventListener('click', function(){
     };
 
     //coloca na memoria central
-    catalogo.push(novoItem);
+    lancamentos.push(novoItem);
 
     //salva a memoria atualzada no navegador
     saveData();

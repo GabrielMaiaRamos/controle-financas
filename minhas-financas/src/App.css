@@ -1,28 +1,28 @@
 :root {
-  /* ===== Cores base (A Ambientação Vermelha) ===== */
-  --bg:           #c56e6e;   /* Fundo geral */
-  --bg-faixa:     #b85555;   /* Fundo secundário: faixas, menus */
-  --card:         #fff5f5;   /* Cards: branco tingido de vermelho */
+  /* ===== Cores base (A Ambientação Financeira) ===== */
+  --bg:           #dce7df;
+  --bg-faixa:     #f7f4ed;
+  --card:         #fffdf8;
 
   /* ===== Texto ===== */
-  --texto:        #4a1515;   /* Vinho muito escuro */
-  --texto-fraco:  #9e5c5c;   /* Vermelho-acinzentado para rótulos */
+  --texto:        #173b35;
+  --texto-fraco:  #6b7d74;
 
   /* ===== Bordas (somente CORES — não o shorthand!) ===== */
-  --borda:        #f0b6b6;   /* Divisórias suaves */
-  --borda-forte:  #df8585;   /* Inputs, linhas visíveis */
+  --borda:        #d6e0d8;
+  --borda-forte:  #a9c2b1;
 
   /* ===== Vermelho (Destaques e Botões) ===== */
-  --accent:        #d93636;
-  --accent-forte1: #a61e1e;
-  --accent-forte2: #ee6565c9;
-  --accent-fraco1: #f09e9e;
-  --accent-fraco2: #f3a784c9;
-  --accent-borda:  #e87676;
+  --accent:        #d18b45;
+  --accent-forte1: #9b5d24;
+  --accent-forte2: #e2a866;
+  --accent-fraco1: #f1d2a8;
+  --accent-fraco2: #f7e4c9;
+  --accent-borda:  #c48a4e;
 
   /* ===== Estados ===== */
-  --erro:          #d93636;
-  --sucesso:       #428f52;
+  --erro:          #b6574b;
+  --sucesso:       #3f8062;
 
   /* ===== Espaçamento (escala de 4px) ===== */
   --esp-1: 4px;
@@ -33,7 +33,7 @@
   --esp-6: 32px;
 
   /* ===== Tipografia ===== */
-  --fonte:        system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fonte:        Georgia, "Times New Roman", serif;
   --txt-pequeno:  0.85rem;
   --txt-base:     1rem;
   --txt-medio:    1.1rem;
@@ -42,7 +42,7 @@
   /* ===== Forma ===== */
   --radius:    10px;
   --radius-sm: 6px;
-  --sombra:    0 4px 8px rgba(32, 5, 5, 0.25);
+  --sombra:    0 8px 20px rgba(31, 64, 52, 0.1);
 }
 
 /* ===== Reset ===== */
@@ -54,7 +54,7 @@
 
 body {
   font-family: var(--fonte);
-  background-color: var(--bg);
+  background: linear-gradient(135deg, #dce7df 0%, #f1eadc 100%);
   color: var(--texto);
   line-height: 1.55;
   padding: var(--esp-5);
@@ -73,12 +73,15 @@ body {
 
 /* ===== Título ===== */
 h1 {
-  text-align: center;
-  margin-bottom: var(--esp-5);
+  margin-bottom: var(--esp-2);
   font-size: var(--txt-grande);
   color: var(--texto);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
+
+.cabecalho { margin-bottom: var(--esp-5); }
+.eyebrow { color: var(--accent-forte1); font: 700 0.75rem var(--fonte); letter-spacing: 0.14em; }
+.subtitulo { color: var(--texto-fraco); font-size: var(--txt-pequeno); }
 
 /* ===== Formulário ===== */
 .formulario {
@@ -88,6 +91,9 @@ h1 {
   gap: var(--esp-3);
   margin-bottom: var(--esp-5);
 }
+
+.linha-formulario { display: flex; gap: var(--esp-3); }
+.linha-formulario input, .linha-formulario select { flex: 1; }
 
 input, select {
   min-width: 0;
@@ -150,6 +156,9 @@ button:active {
   padding: var(--esp-4);
   margin-bottom: var(--esp-3);
   border-left: 5px solid var(--accent);
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
   border-radius: var(--radius-sm);
   color: var(--texto);
   box-shadow: var(--sombra);
@@ -160,10 +169,25 @@ button:active {
   margin-right: var(--esp-1);
 }
 
+.item-card strong::after { content: '  '; white-space: pre; }
+.item-card.entrada { border-left-color: var(--sucesso); }
+.item-card.entrada strong { color: var(--sucesso); }
+.item-card.plano { border-left-color: var(--accent-forte1); }
+.valor { margin-left: auto; font-weight: 700; white-space: nowrap; }
+.btn-excluir { padding: 4px 9px; background: transparent; color: var(--texto-fraco); }
+.btn-excluir:hover { background: var(--accent-fraco2); color: var(--texto); }
+
 /* ===== Estado vazio ===== */
 .vazio {
   text-align: center;
   color: var(--texto-fraco);
   padding: var(--esp-6) var(--esp-4);
   font-size: var(--txt-pequeno);
+}
+
+@media (max-width: 520px) {
+  .linha-formulario { flex-direction: column; }
+  .item-card { align-items: flex-start; flex-wrap: wrap; }
+  .valor { margin-left: 0; }
+  .btn-excluir { margin-left: auto; }
 }

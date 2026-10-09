@@ -3,20 +3,20 @@
 <head> <!--Informações sobre a página (não visíveis na tela)-->
     <meta charset="UTF-8"> <!--Codificação de caracteres-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Pessoal</title> <!--Texto da aba do navegador-->
+    <title>Controle Financas</title>
     <link rel="stylesheet" href="style.css"> <!--Conecta arquivos CSS externo como modo de estilo-->
 </head>
 
 <body> <!--O que aparece na tela-->
     <div class="container"> <!--Div: caixa generica-->
-        <h1>Meu Catálogo</h1>
+        <h1>Controle Financas</h1>
         <div class="formulario">
-            <input type="text" id="titulo" placeholder="Ex: Viagem ao Centro da Terra">
+            <input type="text" id="titulo" placeholder="Ex: Mercado ou aluguel">
 
             <select id="categoria">
-                <option value="Livro">Livro</option>
-                <option value="Música">Album de Musica</option>
-                <option value="Outro">Outros assuntos</option>
+                <option value="Gasto">Gasto</option>
+                <option value="Entrada">Entrada</option>
+                <option value="Plano">Plano</option>
             </select>
 
             <button id="btn-adicionar">Adicionar</button>
@@ -26,10 +26,10 @@
     <div class="container">
         <input type="text" id="busca" placeholder="Busca por nome...">
         <select id="filtro-categoria">
-            <option value="Todos">Todos as Categorias</option>
-            <option value="Livro">Livros</option>
-            <option value="Musica">Músicas</option>
-            <option value="Outros">Outros</option>
+            <option value="Todos">Todos os tipos</option>
+            <option value="Gasto">Gastos</option>
+            <option value="Entrada">Entradas</option>
+            <option value="Plano">Planos</option>
         </select>
     </div>
     

@@ -1,28 +1,28 @@
 :root {
-  /* ===== Cores base (A Ambientação Vermelha) ===== */
-  --bg:           #c56e6e;   /* Fundo geral */
-  --bg-faixa:     #b85555;   /* Fundo secundário: faixas, menus */
-  --card:         #fff5f5;   /* Cards: branco tingido de vermelho */
+  /* ===== Cores base (A Ambientacao Financeira) ===== */
+  --bg:           #dce7df;
+  --bg-faixa:     #f7f4ed;
+  --card:         #fffdf8;
 
   /* ===== Texto ===== */
-  --texto:        #4a1515;   /* Vinho muito escuro */
-  --texto-fraco:  #9e5c5c;   /* Vermelho-acinzentado para rótulos */
+  --texto:        #173b35;
+  --texto-fraco:  #6b7d74;
 
   /* ===== Bordas (somente CORES — não o shorthand!) ===== */
-  --borda:        #f0b6b6;   /* Divisórias suaves */
-  --borda-forte:  #df8585;   /* Inputs, linhas visíveis */
+  --borda:        #d6e0d8;
+  --borda-forte:  #a9c2b1;
 
   /* ===== Vermelho (Destaques e Botões) ===== */
-  --accent:        #d93636;
-  --accent-forte1: #a61e1e;
-  --accent-forte2: #ee6565c9;
-  --accent-fraco1: #f09e9e;
-  --accent-fraco2: #f3a784c9;
-  --accent-borda:  #e87676;
+  --accent:        #d18b45;
+  --accent-forte1: #9b5d24;
+  --accent-forte2: #e2a866;
+  --accent-fraco1: #f1d2a8;
+  --accent-fraco2: #f7e4c9;
+  --accent-borda:  #c48a4e;
 
   /* ===== Estados ===== */
-  --erro:          #d93636;
-  --sucesso:       #428f52;
+  --erro:          #b6574b;
+  --sucesso:       #3f8062;
 
   /* ===== Espaçamento (escala de 4px) ===== */
   --esp-1: 4px;

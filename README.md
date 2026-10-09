@@ -1,52 +1,93 @@
-# Cultural Notes
+# Controle Financas
 
-> Página de notas e reviews sobre álbuns, músicas, livros e cultura.
-> Projeto de estudo em HTML, CSS e JavaScript com roadmap para IA.
+> Aplicacao de controle financeiro pessoal para registrar gastos, entradas e planos.
 
 [![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)]()
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)]()
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)]()
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)]()
-[![AI Planned](https://img.shields.io/badge/AI-planejado-blueviolet)]()
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=20232A)]()
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)]()
+[![JavaScript](https://img.shields.io/badge/JavaScript-ESM-F7DF1E?logo=javascript&logoColor=black)]()
 
----
+## Sobre o projeto
 
-## Sobre o Projeto
+O Controle Financas e uma aplicacao pessoal para acompanhar os movimentos do dinheiro no dia a dia.
+O projeto comeca com uma experiencia local simples e evolui em direcao a uma aplicacao financeira completa, com dados persistidos em banco, integracao segura com Open Finance e recursos de inteligencia artificial.
 
-O **Cultural Notes** é um espaço para registrar impressões, notas e reviews sobre álbuns de música, livros e outros temas culturais.
+O objetivo e construir uma base consistente de produto e engenharia, com foco em acessibilidade, testes, deploy continuo e evolucao incremental.
 
-Este é um **projeto de aprendizado prático** que estou usando para dominar o desenvolvimento web, desde os fundamentos até a integração de Inteligência Artificial para recomendações personalizadas.
+## Funcionalidades atuais
 
----
-
-## Objetivos
-
-- **Curto prazo:** Aplicar HTML, CSS e JavaScript construindo uma interface limpa e funcional
-- **Longo prazo:** Implementar um sistema de recomendações com IA baseado no acervo pessoal
-
----
+- Registrar lancamentos financeiros
+- Informar descricao, valor e tipo
+- Identificar gastos, entradas e planos
+- Exibir os lancamentos em uma lista
+- Remover lancamentos
+- Persistir dados no navegador com `localStorage`
+- Preservar dados antigos salvos na versao anterior
+- Usar layout responsivo para telas menores
 
 ## Tecnologias
 
-**Atualmente:**
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
+**Implementadas:**
+
+- React
+- Vite
+- CSS
+- JavaScript com ES Modules
+- LocalStorage
 
 **Planejadas:**
-- React ou Next.js (frontend)
-- Node.js ou Python (backend)
-- PostgreSQL ou SQLite (banco de dados)
-- LangChain + API de LLM (recomendações com IA)
 
----
+- TypeScript
+- Vitest e Testing Library
+- Node.js ou Python com FastAPI
+- SQLite e PostgreSQL
+- GitHub Actions
+- Open Finance por meio de um agregador autorizado
+- Inteligencia artificial no backend
+
+## Estrutura do projeto
+
+- `minhas-financas/`: aplicacao React principal
+- `minhas-financas/src/`: componentes, estilos e entrada da aplicacao
+- `docs/ROADMAP.md`: fases, entregaveis e proximos passos
+- `src/`: prototipo inicial em HTML, CSS e JavaScript
+
+## Desenvolvimento local
+
+Entre na pasta da aplicacao React e instale as dependencias:
+
+```bash
+cd minhas-financas
+npm install
+```
+
+Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Outros comandos disponiveis:
+
+```bash
+npm run lint
+npm run build
+npm run preview
+```
+
+## Direcao do produto
+
+O projeto sera desenvolvido em etapas pequenas e verificaveis:
+
+1. Consolidar React, componentizacao, TypeScript, testes, acessibilidade e deploy
+2. Criar filtros por periodo, calendario e resumos financeiros
+3. Adicionar receitas e despesas recorrentes, previsoes e alertas
+4. Migrar a persistencia para backend e banco de dados
+5. Integrar contas por Open Finance, sem armazenar senhas bancarias
+6. Adicionar IA para categorizar transacoes, interpretar lancamentos e gerar insights
+
+Obs: Nenhuma integracao bancaria ou recurso de IA e tratado como implementado antes de existir no codigo.
 
 ## Roadmap
 
-O plano completo está em [docs/ROADMAP.md](docs/ROADMAP.md):
-
-1. **Fase 1 — Fundamentos Web:** HTML, CSS, JavaScript puro
-2. **Fase 2 — Interatividade:** DOM, eventos, LocalStorage
-3. **Fase 3 — Modernização:** Framework frontend (React/Next.js)
-4. **Fase 4 — Backend:** API, banco de dados, autenticação
-5. **Fase 5 — IA:** Sistema de recomendações personalizadas
+O plano completo esta em [docs/ROADMAP.md](docs/ROADMAP.md). A aplicacao esta atualmente na **Fase 3 - Modernizacao com Framework e Qualidade**.
