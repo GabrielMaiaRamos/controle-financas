@@ -12,7 +12,7 @@
   --borda:        #d6e0d8;
   --borda-forte:  #a9c2b1;
 
-  /* ===== Vermelho (Destaques e Botões) ===== */
+  /* ===== Cor de destaque ===== */
   --accent:        #d18b45;
   --accent-forte1: #9b5d24;
   --accent-forte2: #e2a866;
@@ -170,9 +170,12 @@ button:active {
 }
 
 .item-card strong::after { content: '  '; white-space: pre; }
+.item-card.gasto { border-left-color: var(--erro); }
+.item-card.gasto strong { color: var(--erro); }
 .item-card.entrada { border-left-color: var(--sucesso); }
 .item-card.entrada strong { color: var(--sucesso); }
-.item-card.plano { border-left-color: var(--accent-forte1); }
+.item-card.plano { border-left-color: var(--accent); }
+.item-card.plano strong { color: var(--accent); }
 .valor { margin-left: auto; font-weight: 700; white-space: nowrap; }
 .btn-excluir { padding: 4px 9px; background: transparent; color: var(--texto-fraco); }
 .btn-excluir:hover { background: var(--accent-fraco2); color: var(--texto); }
