@@ -6,12 +6,6 @@
 Este documento descreve a evolução planejada do projeto, dividida em fases
 Cada fase representa um bloco de aprendizado e um entregável concreto.
 
-## Praticas Transversais — Desde Agora
-- [ ] Usar branches curtas para cada funcionalidade
-- [ ] Registrar mudancas em commits pequenos e claros
-- [ ] Abrir issues para tarefas e bugs
-- [ ] Usar pull requests para revisar mudancas importantes
-
 ## Fase 1 — Fundamentos Web (Concluida)
 **Objetivo:** Dominar a base do desenvolvimento web.
 - [x] Estrutura HTML semântica
@@ -23,7 +17,7 @@ Cada fase representa um bloco de aprendizado e um entregável concreto.
 
 ## Fase 2 — Interatividade e Persistencia (Concluida)
 **Objetivo:** Tornar a aplicação dinâmica.
-- [ ] Manipulação avançada do DOM
+- [x] Renderização da interface a partir do estado
 - [x] Eventos e formularios
 - [x] LocalStorage para persistir lancamentos
 - [ ] Filtros e busca
@@ -34,7 +28,7 @@ Cada fase representa um bloco de aprendizado e um entregável concreto.
 **Objetivo:** Consolidar a base React e publicar uma primeira versao utilizavel.
 - [x] Migrar para React
 - [x] Gerenciamento de estado
-- [ ] Componentizacao
+- [x] Componentizacao
 - [ ] Migrar o projeto para TypeScript
 - [ ] Testes com Vitest e Testing Library
 - [ ] Revisao de acessibilidade (a11y)

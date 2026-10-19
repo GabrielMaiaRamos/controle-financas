@@ -1,104 +1,68 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { useEffect, useState } from "react"
+import "./App.css"
+
+import LancamentoForm from "./components/LancamentoForm";
+import LancamentosLista from "./components/LancamentosLista";
 
 function App() {
-  const [lancamentos, setLancamentos] = useState([]);
-  const [descricao, setDescricao] = useState('');
-  const [valor, setValor] = useState('');
-  const [tipo, setTipo] = useState('Gasto');
+  // useState cria um estado e uma funcao para atualiza-lo.
+  // Quando o estado muda, o React renderiza a interface novamente.
+  const [lancamentos, setLancamentos] = useState(()=>{
+    const savedData = localStorage.getItem("controleFinancas");
 
-  useEffect(() => {
-    const savedData = localStorage.getItem('controleFinancas') || localStorage.getItem('minhasFinancas');
-    if (savedData) setLancamentos(JSON.parse(savedData));
-  }, []);
+    if(!savedData) return [];
 
-  useEffect(() => {
-    localStorage.setItem('controleFinancas', JSON.stringify(lancamentos));
-  }, [lancamentos]);
-
-  function adicionarLancamento(event) {
-    event.preventDefault();
-    if (!descricao.trim() || !valor) {
-      alert('Preencha a descricao e o valor.');
-      return;
+    try {
+      return JSON.parse(savedData);
+    } catch {
+      return [];
     }
+  });
 
-    setLancamentos([
-      ...lancamentos,
-      { id: crypto.randomUUID(), descricao: descricao.trim(), valor: Number(valor), tipo },
-    ]);
-    setDescricao('');
-    setValor('');
+  // Recupera os lancamentos que estavam salvos no navegador.
+  function loadData() {
+    const savedData = localStorage.getItem("controleFinancas");
+      setLancamentos(JSON.parse(savedData));
+  }
+  // useEffect executa um efeito colateral depois da renderizacao.
+  useEffect(loadData, []); //O array vazio [] significa executar apenas uma vez (quando a tela for carregada).
+
+
+  function saveData() {
+    localStorage.setItem("controleFinancas", JSON.stringify(lancamentos));
+  }
+  useEffect(saveData, [lancamentos]); //[lancamentos] faz o efeito executar sempre que a lista muda e salva a versao mais recente no localStorage.
+
+
+  function adicionarLancamento(novoLancamento) {
+    // O spread (...) copia os itens antigos e coloca o novo no final da lista.
+    setLancamentos((listaAtual) => [...listaAtual, novoLancamento])
   }
 
   function removerLancamento(id) {
-    setLancamentos(lancamentos.filter((lancamento) => lancamento.id !== id));
+    // filter cria uma nova lista mantendo todos os itens, menos o selecionado.
+    setLancamentos((listaAtual) => listaAtual.filter((lancamento) => lancamento.id !== id));
   }
 
-  function formatarValor(value) {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    }).format(value);
-  }
-
-    return (
-        <div className='container'>
-      <div className='cabecalho'>
-        <p className='eyebrow'>ORGANIZACAO PESSOAL</p>
+  return (
+    <div className="container">
+      <div className="cabecalho">
+        <p className="eyebrow">ORGANIZACAO PESSOAL</p>
         <h1>Controle Financas</h1>
-        <p className='subtitulo'>Registre seus movimentos e acompanhe seus planos.</p>
+        <p className="subtitulo">Registre seus movimentos e acompanhe seus planos.</p>
       </div>
+    
+      <LancamentoForm
+        onAdicionar={adicionarLancamento}
+      />
 
-      <form className='formulario' onSubmit={adicionarLancamento}>
-        <input
-          type='text'
-          placeholder='Ex: Mercado, salario ou viagem'
-          value={descricao}
-          onChange={(event) => setDescricao(event.target.value)}
-        />
-        <div className='linha-formulario'>
-          <input
-            type='number'
-            min='0'
-            step='0.01'
-            placeholder='Valor em R$'
-            value={valor}
-            onChange={(event) => setValor(event.target.value)}
-          />
-          <select value={tipo} onChange={(event) => setTipo(event.target.value)}>
-            <option value='Gasto'>Gasto</option>
-            <option value='Entrada'>Entrada</option>
-            <option value='Plano'>Plano</option>
-          </select>
-        </div>
-        <button type='submit'>Adicionar lancamento</button>
-      </form>
+      <LancamentosLista
+        lancamentos={lancamentos}
+        onRemover={removerLancamento}
+      />
 
-      <div className='lista-itens'>
-        {lancamentos.length === 0 ? (
-          <p className='vazio'>Nenhum lancamento por enquanto.</p>
-        ) : (
-          lancamentos.map((lancamento) => (
-            <div key={lancamento.id} className={`item-card ${lancamento.tipo.toLowerCase()}`}>
-              <span>
-                <strong>{lancamento.tipo}</strong>
-                {lancamento.descricao}
-              </span>
-              <span className='valor'>{formatarValor(lancamento.valor)}</span>
-              <button
-                className='btn-excluir'
-                aria-label={`Remover ${lancamento.descricao}`}
-                onClick={() => removerLancamento(lancamento.id)}
-              >
-                X
-              </button>
-            </div>
-          ))
-        )}
-      </div>
     </div>
   );
 }
 
-export default App
+export default App;
