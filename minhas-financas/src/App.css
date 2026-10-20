@@ -1,48 +1,49 @@
 :root {
-  /* ===== Cores base (A Ambientação Financeira) ===== */
+  /* ===== Base colors ===== */
   --bg:           #dce7df;
-  --bg-faixa:     #f7f4ed;
+  --bg-surface:   #f7f4ed;
   --card:         #fffdf8;
 
-  /* ===== Texto ===== */
-  --texto:        #173b35;
-  --texto-fraco:  #6b7d74;
+  /* ===== Text ===== */
+  --text:         #173b35;
+  --text-muted:   #6b7d74;
 
-  /* ===== Bordas (somente CORES — não o shorthand!) ===== */
-  --borda:        #d6e0d8;
-  --borda-forte:  #a9c2b1;
+  /* ===== Borders ===== */
+  --border:       #d6e0d8;
+  --border-strong:#a9c2b1;
 
-  /* ===== Cor de destaque ===== */
+  /* ===== Accent color ===== */
   --accent:        #d18b45;
-  --accent-forte1: #9b5d24;
-  --accent-forte2: #e2a866;
-  --accent-fraco1: #f1d2a8;
-  --accent-fraco2: #f7e4c9;
-  --accent-borda:  #c48a4e;
+  --accent-dark: #9b5d24;
+  --accent-light: #e2a866;
+  --accent-soft: #f1d2a8;
+  --accent-pale: #f7e4c9;
+  --accent-border:  #c48a4e;
 
-  /* ===== Estados ===== */
-  --erro:          #b6574b;
-  --sucesso:       #3f8062;
+  /* ===== States ===== */
+  --error:         #b6574b;
+  --success:       #3f8062;
 
-  /* ===== Espaçamento (escala de 4px) ===== */
-  --esp-1: 4px;
-  --esp-2: 8px;
-  --esp-3: 12px;
-  --esp-4: 16px;
-  --esp-5: 24px;
-  --esp-6: 32px;
+  /* ===== Spacing (4px scale) ===== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
 
-  /* ===== Tipografia ===== */
-  --fonte:        Georgia, "Times New Roman", serif;
-  --txt-pequeno:  0.85rem;
-  --txt-base:     1rem;
-  --txt-medio:    1.1rem;
-  --txt-grande:   1.6rem;
+  /* ===== Typography ===== */
+  --font:         Georgia, "Times New Roman", serif;
+  --text-minimum:    0.65rem;
+  --text-small:   0.85rem;
+  --text-base:    1rem;
+  --text-medium:  1.1rem;
+  --text-large:   1.6rem;
 
-  /* ===== Forma ===== */
+  /* ===== Shape ===== */
   --radius:    10px;
   --radius-sm: 6px;
-  --sombra:    0 8px 20px rgba(31, 64, 52, 0.1);
+  --shadow:    0 8px 20px rgba(31, 64, 52, 0.1);
 }
 
 /* ===== Reset ===== */
@@ -53,11 +54,11 @@
 }
 
 body {
-  font-family: var(--fonte);
+  font-family: var(--font);
   background: linear-gradient(135deg, #dce7df 0%, #f1eadc 100%);
-  color: var(--texto);
+  color: var(--text);
   line-height: 1.55;
-  padding: var(--esp-5);
+  padding: var(--space-5);
 }
 
 /* ===== Container ===== */
@@ -65,77 +66,94 @@ body {
   max-width: 700px;
   margin: 0 auto;
   margin-bottom: 5%;
-  background-color: var(--bg-faixa);
-  padding: var(--esp-5);
+  background-color: var(--bg-surface);
+  padding: var(--space-5);
   border-radius: var(--radius);
-  box-shadow: var(--sombra);
+  box-shadow: var(--shadow);
 }
 
-/* ===== Título ===== */
+/* ===== Title ===== */
 h1 {
-  margin-bottom: var(--esp-2);
-  font-size: var(--txt-grande);
-  color: var(--texto);
+  margin-bottom: var(--space-2);
+  font-size: var(--text-large);
+  color: var(--text);
   letter-spacing: 0.01em;
 }
 
-.cabecalho { margin-bottom: var(--esp-5); }
-.eyebrow { color: var(--accent-forte1); font: 700 0.75rem var(--fonte); letter-spacing: 0.14em; }
-.subtitulo { color: var(--texto-fraco); font-size: var(--txt-pequeno); }
+.header { margin-bottom: var(--space-5); }
+.eyebrow { color: var(--accent-dark); font: 700 0.75rem var(--font); letter-spacing: 0.14em; }
+.subtitle { color: var(--text-muted); font-size: var(--text-small); }
 
-/* ===== Secoes da pagina ===== */
-.secao {
-  padding-top: var(--esp-5);
-  border-top: 1px solid var(--borda);
+/* ===== Page sections ===== */
+.section {
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
 }
 
-.secao + .secao {
-  margin-top: var(--esp-5);
+.section + .section {
+  margin-top: var(--space-5);
 }
 
-/* ===== Formulário ===== */
-.formulario {
+/* ===== Form ===== */
+.form {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: var(--esp-3);
-  margin-bottom: var(--esp-5);
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
 }
 
-.linha-formulario { display: flex; gap: var(--esp-3); }
-.linha-formulario input, .linha-formulario select { flex: 1; }
+.form-row { display: flex; gap: var(--space-3); }
+.form-row input, .form-row select { flex: 1; }
 
 input, select {
   min-width: 0;
-  padding: var(--esp-3);
-  border: 2px solid var(--borda);
+  padding: var(--space-3);
+  border: 2px solid var(--border);
   border-radius: var(--radius-sm);
   font: inherit;
-  color: var(--texto);
+  color: var(--text);
   background-color: var(--card);
   transition: border-color .15s, box-shadow .15s;
 }
 
 input::placeholder {
-  color: var(--texto-fraco);
+  color: var(--text-muted);
   opacity: 0.7;
 }
 
 input:focus, select:focus {
   outline: none;
-  border-color: var(--accent-borda);
-  box-shadow: 0 0 0 3px var(--accent-fraco1);
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 input { flex: 1; }
 
-/* ===== Botão ===== */
+/* ===== Date ===== */
+
+.date-field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.date-hint {
+  color: var(--text-muted);
+  justify-content: right;
+  font-size: var(--text-minimum);
+  line-height: 1;
+  text-align: right;
+}
+
+/* ===== Button ===== */
 button {
-  padding: var(--esp-3) var(--esp-4);
+  padding: var(--space-3) var(--space-4);
   border: none;
   border-radius: var(--radius-sm);
-  background-color: var(--accent-fraco1);
-  color: var(--texto);
+  background-color: var(--accent-soft);
+  color: var(--text);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
@@ -143,89 +161,89 @@ button {
 }
 
 button:hover {
-  background-color: var(--accent-forte2);
+  background-color: var(--accent-light);
 }
 
 button:active {
   transform: translateY(3px);
 }
 
-/* ===== Filtro ===== */
+/* ===== Filters ===== */
 
-.filtros {
+.filters {
   display: flex;
-  gap: var(--esp-3);
-  margin-bottom: var(--esp-5);
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
 }
 
-.filtros input {
+.filters input {
   flex: 1;
 }
 
-.filtros select {
+.filters select {
   min-width: 150px;
 }
 
 @media (max-width: 520px) {
-  .filtros {
+  .filters {
     flex-direction: column;
   }
 
-  .filtros select {
+  .filters select {
     width: 100%;
   }
 }
-/* ===== Cards de item ===== */
+/* ===== Transaction cards ===== */
 
 .card-bg {
   background-color: var(--card);
-  padding: var(--esp-4);
-  margin-bottom: var(--esp-3);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
   border-radius: var(--radius-sm);
-  color: var(--texto);
-  box-shadow: var(--sombra);
+  color: var(--text);
+  box-shadow: var(--shadow);
 }
 
 .item-card {
   background-color: var(--card);
-  padding: var(--esp-4);
-  margin-bottom: var(--esp-3);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
   border-left: 5px solid var(--accent);
   display: flex;
   align-items: center;
-  gap: var(--esp-3);
+  gap: var(--space-3);
   border-radius: var(--radius-sm);
-  color: var(--texto);
-  box-shadow: var(--sombra);
+  color: var(--text);
+  box-shadow: var(--shadow);
 }
 
 .item-card strong {
-  color: var(--accent-forte1);
-  margin-right: var(--esp-1);
+  color: var(--accent-dark);
+  margin-right: var(--space-1);
 }
 
 .item-card strong::after { content: '  '; white-space: pre; }
-.item-card.gasto { border-left-color: var(--erro); }
-.item-card.gasto strong { color: var(--erro); }
-.item-card.entrada { border-left-color: var(--sucesso); }
-.item-card.entrada strong { color: var(--sucesso); }
-.item-card.plano { border-left-color: var(--accent); }
-.item-card.plano strong { color: var(--accent); }
-.valor { margin-left: auto; font-weight: 700; white-space: nowrap; }
-.btn-excluir { padding: 4px 9px; background: transparent; color: var(--texto-fraco); }
-.btn-excluir:hover { background: var(--accent-fraco2); color: var(--texto); }
+.item-card.expense { border-left-color: var(--error); }
+.item-card.expense strong { color: var(--error); }
+.item-card.income { border-left-color: var(--success); }
+.item-card.income strong { color: var(--success); }
+.item-card.plan { border-left-color: var(--accent); }
+.item-card.plan strong { color: var(--accent); }
+.amount { margin-left: auto; font-weight: 700; white-space: nowrap; }
+.delete-button { padding: 4px 9px; background: transparent; color: var(--text-muted); }
+.delete-button:hover { background: var(--accent-pale); color: var(--text); }
 
-/* ===== Estado vazio ===== */
-.vazio {
+/* ===== Empty state ===== */
+.empty-state {
   text-align: center;
-  color: var(--texto-fraco);
-  padding: var(--esp-6) var(--esp-4);
-  font-size: var(--txt-pequeno);
+  color: var(--text-muted);
+  padding: var(--space-6) var(--space-4);
+  font-size: var(--text-small);
 }
 
 @media (max-width: 520px) {
-  .linha-formulario { flex-direction: column; }
+  .form-row { flex-direction: column; }
   .item-card { align-items: flex-start; flex-wrap: wrap; }
-  .valor { margin-left: 0; }
-  .btn-excluir { margin-left: auto; }
+  .amount { margin-left: 0; }
+  .delete-button { margin-left: auto; }
 }

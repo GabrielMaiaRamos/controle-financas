@@ -1,80 +1,84 @@
 import { useEffect, useState } from "react"
 import "./App.css"
 
-import LancamentoForm from "./components/LancamentoForm";
-import LancamentosLista from "./components/LancamentosLista";
-import Filtros from "./components/Filtros";
+import TransactionForm from "./components/TransactionForm";
+import TransactionList from "./components/TransactionList";
+import Filters from "./components/Filters";
 
 function App() {
-  // useState cria um estado e uma funcao para atualiza-lo.
-  // Quando o estado muda, o React renderiza a interface novamente.
-  const [lancamentos, setLancamentos] = useState(()=>{
-    const savedData = localStorage.getItem("controleFinancas");
+  const [transactions, setTransactions] = useState(() => {
+    const savedData = localStorage.getItem("financeTransactions")
+      || localStorage.getItem("controleFinancas");
 
     if(!savedData) return [];
 
     try {
-      return JSON.parse(savedData);
+      return JSON.parse(savedData).map((transaction) => ({
+        id: transaction.id,
+        description: transaction.description ?? transaction.descricao,
+        amount: transaction.amount ?? transaction.valor,
+        type: transaction.type ?? transaction.tipo,
+        category: transaction.category ?? transaction.categoria,
+        date: transaction.date ?? transaction.data,
+      }));
     } catch {
       return [];
     }
   });
 
-  //Filtragem
-  const [busca, setBusca] = useState("");
-  const [tipoFiltro, setTipoFiltro] = useState("Todos");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [typeFilter, setTypeFilter] = useState("Todos");
   
-  const lancamentosFiltrados = lancamentos.filter((lancamento) => {
-    const correspondeBusca = lancamento.descricao
+  const filteredTransactions = transactions.filter((transaction) => {
+    const matchesSearch = transaction.description
       .toLowerCase()
-      .includes(busca.toLowerCase());
-    const correspondeTipo = tipoFiltro === "Todos" || tipoFiltro === lancamento.tipo;
-    return correspondeBusca && correspondeTipo;
+      .includes(searchTerm.toLowerCase());
+    const matchesType = typeFilter === "Todos" || typeFilter === transaction.type;
+    return matchesSearch && matchesType;
   });
 
-  function saveData() {
-    localStorage.setItem("controleFinancas", JSON.stringify(lancamentos));
+  function saveTransactions() {
+    localStorage.setItem("financeTransactions", JSON.stringify(transactions));
   }
-  useEffect(saveData, [lancamentos]); //[lancamentos] faz o efeito executar sempre que a lista muda e salva a versao mais recente no localStorage.
+  useEffect(saveTransactions, [transactions]);
 
-
-  function adicionarLancamento(novoLancamento) {
-    // O spread (...) copia os itens antigos e coloca o novo no final da lista.
-    setLancamentos((listaAtual) => [...listaAtual, novoLancamento])
+  function addTransaction(newTransaction) {
+    setTransactions((currentTransactions) => [...currentTransactions, newTransaction]);
   }
 
-  function removerLancamento(id) {
-    // filter cria uma nova lista mantendo todos os itens, menos o selecionado.
-    setLancamentos((listaAtual) => listaAtual.filter((lancamento) => lancamento.id !== id));
+  function removeTransaction(id) {
+    setTransactions((currentTransactions) =>
+      currentTransactions.filter((transaction) => transaction.id !== id)
+    );
   }
 
   return (
     <div className="container">
-      <div className="cabecalho">
+      <div className="header">
         <p className="eyebrow">ORGANIZACAO PESSOAL</p>
         <h1>Controle Financas</h1>
-        <p className="subtitulo">Registre seus movimentos e acompanhe seus planos.</p>
+        <p className="subtitle">Registre seus movimentos e acompanhe seus planos.</p>
       </div>
 
-      <section className="secao formulario-secao">
-        <LancamentoForm
-          onAdicionar={adicionarLancamento}
+      <section className="section form-section">
+        <TransactionForm
+          onAddTransaction={addTransaction}
         />
       </section>
 
-      <section className="secao filtros-secao">
-        <Filtros
-          busca={busca}
-          tipoFiltro={tipoFiltro}
-          onBuscaChange={setBusca}
-          onTipoChange={setTipoFiltro}
+      <section className="section filters-section">
+        <Filters
+          searchTerm={searchTerm}
+          typeFilter={typeFilter}
+          onSearchChange={setSearchTerm}
+          onTypeChange={setTypeFilter}
         />
       </section>
 
-      <section className="secao lista-secao">
-        <LancamentosLista
-          lancamentos={lancamentosFiltrados}
-          onRemover={removerLancamento}
+      <section className="section list-section">
+        <TransactionList
+          transactions={filteredTransactions}
+          onRemove={removeTransaction}
         />
       </section>
     </div>
