@@ -83,6 +83,16 @@ h1 {
 .eyebrow { color: var(--accent-forte1); font: 700 0.75rem var(--fonte); letter-spacing: 0.14em; }
 .subtitulo { color: var(--texto-fraco); font-size: var(--txt-pequeno); }
 
+/* ===== Secoes da pagina ===== */
+.secao {
+  padding-top: var(--esp-5);
+  border-top: 1px solid var(--borda);
+}
+
+.secao + .secao {
+  margin-top: var(--esp-5);
+}
+
 /* ===== Formulário ===== */
 .formulario {
   display: flex;
@@ -140,6 +150,31 @@ button:active {
   transform: translateY(3px);
 }
 
+/* ===== Filtro ===== */
+
+.filtros {
+  display: flex;
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-5);
+}
+
+.filtros input {
+  flex: 1;
+}
+
+.filtros select {
+  min-width: 150px;
+}
+
+@media (max-width: 520px) {
+  .filtros {
+    flex-direction: column;
+  }
+
+  .filtros select {
+    width: 100%;
+  }
+}
 /* ===== Cards de item ===== */
 
 .card-bg {

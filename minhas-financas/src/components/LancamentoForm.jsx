@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-
-
 function LancamentoForm({ onAdicionar }) {
     const [descricao, setDescricao] = useState('');
     const [valor, setValor] = useState('');

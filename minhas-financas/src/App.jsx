@@ -3,6 +3,7 @@ import "./App.css"
 
 import LancamentoForm from "./components/LancamentoForm";
 import LancamentosLista from "./components/LancamentosLista";
+import Filtros from "./components/Filtros";
 
 function App() {
   // useState cria um estado e uma funcao para atualiza-lo.
@@ -19,14 +20,17 @@ function App() {
     }
   });
 
-  // Recupera os lancamentos que estavam salvos no navegador.
-  function loadData() {
-    const savedData = localStorage.getItem("controleFinancas");
-      setLancamentos(JSON.parse(savedData));
-  }
-  // useEffect executa um efeito colateral depois da renderizacao.
-  useEffect(loadData, []); //O array vazio [] significa executar apenas uma vez (quando a tela for carregada).
-
+  //Filtragem
+  const [busca, setBusca] = useState("");
+  const [tipoFiltro, setTipoFiltro] = useState("Todos");
+  
+  const lancamentosFiltrados = lancamentos.filter((lancamento) => {
+    const correspondeBusca = lancamento.descricao
+      .toLowerCase()
+      .includes(busca.toLowerCase());
+    const correspondeTipo = tipoFiltro === "Todos" || tipoFiltro === lancamento.tipo;
+    return correspondeBusca && correspondeTipo;
+  });
 
   function saveData() {
     localStorage.setItem("controleFinancas", JSON.stringify(lancamentos));
@@ -51,16 +55,28 @@ function App() {
         <h1>Controle Financas</h1>
         <p className="subtitulo">Registre seus movimentos e acompanhe seus planos.</p>
       </div>
-    
-      <LancamentoForm
-        onAdicionar={adicionarLancamento}
-      />
 
-      <LancamentosLista
-        lancamentos={lancamentos}
-        onRemover={removerLancamento}
-      />
+      <section className="secao formulario-secao">
+        <LancamentoForm
+          onAdicionar={adicionarLancamento}
+        />
+      </section>
 
+      <section className="secao filtros-secao">
+        <Filtros
+          busca={busca}
+          tipoFiltro={tipoFiltro}
+          onBuscaChange={setBusca}
+          onTipoChange={setTipoFiltro}
+        />
+      </section>
+
+      <section className="secao lista-secao">
+        <LancamentosLista
+          lancamentos={lancamentosFiltrados}
+          onRemover={removerLancamento}
+        />
+      </section>
     </div>
   );
 }

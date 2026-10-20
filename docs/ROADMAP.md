@@ -20,7 +20,7 @@ Cada fase representa um bloco de aprendizado e um entregável concreto.
 - [x] Renderização da interface a partir do estado
 - [x] Eventos e formularios
 - [x] LocalStorage para persistir lancamentos
-- [ ] Filtros e busca
+- [x] Filtros e busca
 
 **Entregavel:** Aplicacao que salva e recupera lancamentos localmente.
 
